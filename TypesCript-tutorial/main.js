@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var messege = "Hello world";
 var secondMessege = "I love the world";
@@ -14,12 +29,12 @@ var isCoding = undefined; // this is a multi type variable decleration
 var n = null;
 var u = undefined;
 var newUser = null; // you can set a boolean to a null value like this in typescript. You can also do this for a number value in typescript
-var sentence = "Hello everyone my name is ".concat(name, ", i am a ").concat(hobbie, " and i am ").concat(age, " years old");
+var sentence = "Hello everyone my name is , i am a ".concat(hobbie, " and i am ").concat(age, " years old");
 console.log(sentence);
 // in typescript you can declare an array of values using the array type which have two syntaxes
 var numberList = [1, 2, 3, 4, 5];
 var secondNumberList = [1, 2, 3, 4, 5];
-// forn string its same thing
+// for string its same thing
 var firstNameList = ["John", "moses", "joseph", "iseac"];
 var secondNameList = ["John", "moses", "joseph", "iseac"];
 //in cases where we have an array of mixed type, typescript provides the tuple type which allows us add string and numbers in an array
@@ -79,8 +94,51 @@ function addNumbers(num1, num2, num3, num4) {
         return newNum = num1 + num2 - num3 + num4;
     }
     else {
-        return newNum = num1 + num2 + 4;
+        return newNum = num1 + num2 + num4;
     }
     return newNum;
 }
 addNumbers(10, 10);
+// TOPIC: INTERFACE
+//Interface can be used to maintain clean codes
+// in our exaample below we use interface Person as an oject and asigned it as a type to our person object passed in the function
+// this way the file would not be maintained properly
+function personDetails(person) {
+    // console.log(`${person.firstName} ${person.lastName}`);
+}
+;
+var p = {
+    firstName: "Bruce",
+    lastName: "Wayne",
+};
+personDetails(p);
+;
+function newNames(person) {
+    console.log("".concat(person.firstName, " ").concat(person.lastName));
+}
+;
+newNames(p);
+// TOPIC: Classes.
+//typescript supports classes with object oriented approach
+//In TypeScript, as in most object-oriented programming languages, classes are used as a fundamental building block for organizing and encapsulating code.
+var Employee = /** @class */ (function () {
+    function Employee(name) {
+        this.employessName = name;
+    }
+    Employee.prototype.greet = function () {
+        console.log("good morning ".concat(this.employessName, " and welcome on board"));
+    };
+    return Employee;
+}());
+;
+var employeeOne = new Employee("godwin");
+console.log(employeeOne.employessName);
+employeeOne.greet();
+//TypeScript supports class inheritance, allowing you to create new classes that inherit properties and methods from existing ones. This enables you to create hierarchies and share code between related classes.
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
+    function Manager(managerName) {
+        return _super.call(this, managerName) || this;
+    }
+    return Manager;
+}(Employee));
