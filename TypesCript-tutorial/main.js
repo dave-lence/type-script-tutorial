@@ -140,5 +140,12 @@ var Manager = /** @class */ (function (_super) {
     function Manager(managerName) {
         return _super.call(this, managerName) || this;
     }
+    ;
+    Manager.prototype.delegateWork = function () {
+        console.log("delegating worl");
+    };
+    ;
     return Manager;
 }(Employee));
+;
+var managerOne = new Manager("David");

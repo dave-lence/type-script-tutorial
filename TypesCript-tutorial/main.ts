@@ -158,6 +158,12 @@ employeeOne.greet();
 //TypeScript supports class inheritance, allowing you to create new classes that inherit properties and methods from existing ones. This enables you to create hierarchies and share code between related classes.
 class Manager extends Employee {
     constructor(managerName: string) {
-        super(managerName);
-    }
-}
+        super(managerName); // using the super keyword to call the based class constructor. This would initialize tha manager name to the eployessName in the Employee class
+    };
+    delegateWork(){
+        console.log(`delegating worl`)
+    };
+};
+
+let managerOne = new Manager("David")
+
